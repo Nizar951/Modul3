@@ -36,3 +36,24 @@
     transform: rotate(360deg);
   }
 }
+
+.isi{
+  border: solid gray;
+  padding: 30px;
+}
+
+.isi img{
+border-radius: 20px;
+}
+s
+.card-body{
+color: black;
+}
+
+.card{
+padding: 20px;
+}
+
+h5{
+  color: black;
+}

@@ -1,8 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
-import Music from "./Music/index";
-import 'bootstrap';
 //NIZAR MAYRALDO
 function App() {
   
@@ -14,6 +13,7 @@ function App() {
   const [token, setToken] = useState("")
   const [searchKey, setSearchKey] = useState("")
   const [artists, setArtists] = useState([])
+  const [tombol, setTombol] = useState(`Select`)
 
   useEffect(  ()  =>  {
     const hash = window.location.hash
@@ -52,14 +52,27 @@ function App() {
   }
 
   const renderhasil = () => {
-    return artists.map(artist =>(
-      <div key={artist.key}>
-        {/* {<Music src={artist.images[0].url} nama={artist.name}/>} */}
-        {artist.images.length ? <img width={"100%"} src={artist.images[0].url} alt=""/> : <div>No Image</div>}
-        {artist.name}
+    return artists.map(artist => (
+      <div key={artist.key} className="card">
+        {artist.images.length ? <img width={"100%"} className="card-img-top" src={artist.images[0].url} alt="cover"/> : <div>No Image</div>}
+        <div className="card-body">
+          <h5 className="card-title">Artist : {artist.name}</h5>
+        </div>
+        <button onClick={berubah} className="btn btn-success">{tombol}</button>
       </div>
     ))
+    
   }
+
+const berubah = () => {
+  console.log("masuk");
+  if(tombol === `Select`){
+    setTombol(`Deselect`)
+  }
+  else if(tombol === `Deselect`){
+    setTombol(`Select`)
+  }
+}
 
   return (
     <div className="App">
